@@ -61,7 +61,7 @@ const buttonColumn = $("<section>");
 buttonColumn.attr('class', 'button-col col-2');
 
 //create a new save button
-const SaveButton = $('<button class="btn btn-primary">');
+const SaveButton = $('<button class="btn btn-outline-primary btn-block">');
 SaveButton.text('Save');
 buttonColumn.append(SaveButton);
 
