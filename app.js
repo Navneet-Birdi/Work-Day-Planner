@@ -91,7 +91,7 @@ for (let hour = 9; hour < 18; hour++){
 
 //When click on save button
 //on click event
-$(document).on ('click', '.savebutton', function(event){
+$('document').on('click' ['.savebutton'], function(event){
 //current button
 const buttonClicked = $(event.target);
 //to get a text area go to previous sibling and children on text area
@@ -101,8 +101,12 @@ const textarea = buttonClicked.parent().prev().children();
 const enteredText = textarea.val();
 console.log(enteredText);
 
+//existing data from local storage
+const existingData = localStorage.getItem(hour);
+textarea.val(existingData);
 
-
+console.log(hour);
+console.log(enteredText);
 
 localStorage.setItem(hour,enteredText);
 
