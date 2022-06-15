@@ -7,6 +7,11 @@ $("#current-Time").text(current)
 },1000);
 }
 
+
+
+
+
+
 function createTimeBlock(hour){
 
 //creating row first usingjQuery
@@ -61,9 +66,9 @@ const buttonColumn = $("<section>");
 buttonColumn.attr('class', 'button-col col-2');
 
 //create a new save button
-const SaveButton = $('<button class="btn btn-outline-primary btn-block">');
-SaveButton.text('Save');
-buttonColumn.append(SaveButton);
+const saveButton = $('<button class="btn btn-outline-primary btn-block">');
+saveButton.text('Save');
+buttonColumn.append(saveButton);
 
 
 
@@ -84,7 +89,25 @@ for (let hour = 9; hour < 18; hour++){
 
 })
 
+//When click on save button
+//on click event
+$(document).on ('click', '.savebutton', function(event){
+//current button
+const buttonClicked = $(event.target);
+//to get a text area go to previous sibling and children on text area
+const textarea = buttonClicked.parent().prev().children();
 
+//get a text entered
+const enteredText = textarea.val();
+console.log(enteredText);
+
+
+
+
+localStorage.setItem(hour,enteredText);
+
+
+})
 
 
 
