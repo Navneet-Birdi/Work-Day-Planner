@@ -6,13 +6,39 @@ const current = moment().format("YYYY-MM-DD HH:mm:ss");
 $("#current-Time").text(current)
 },1000);
 }
+
 function createTimeBlock(hour){
 
-
-
 //creating row first usingjQuery
-const row = $("<section>");
-row.attr('class','row');
+const row = $("<div>");
+
+
+const currentTime = Number(moment().format("H"));
+//for past
+const isPast = hour < currentTime;
+
+//for present
+const isPresent = hour === currentTime;
+
+//for future
+const isFuture = hour > currentTime;
+
+let rowClass = 'row';
+
+//condition to check if it is past,present or future
+if(isPast){
+    rowClass = rowClass + ' past';
+}
+if(isPresent){
+    rowClass = rowClass + ' present';
+}
+if(isFuture){
+    rowClass = rowClass + ' future';
+}
+
+
+
+row.attr('class', rowClass);
 
 //All three columns in a row
 //Creating time column first
@@ -57,36 +83,12 @@ for (let hour = 9; hour < 18; hour++){
 }
 
 })
-function pastpresentfuture(time){
-
-const row = $("<section>");
-const currentTime = Number(moment().format("H"));
-//for past
-const isPast = time < currentTime;
-
-//for present
-const isPresent = time === currentTime;
-
-//for future
-const isFuture = time > currentTime;
-
-let rowClass = 'row';
-
-//condition to check if it is past,present or future
-if(isPast){
-    rowClass = rowClass + 'past';
-}
-if(isPresent){
-    rowClass = rowClass + 'present';
-}
-if(isFuture){
-    rowClass = rowClass + 'future';
-}
 
 
 
 
 
 
-row.attr('class', 'rowClass');
-}
+
+
+
