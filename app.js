@@ -1,5 +1,4 @@
-// when I visit this page------
-//I should see a clock in header
+//a clock in header
 function startClock(){
 setInterval(function(){
 const current = moment().format("YYYY-MM-DD HH:mm:ss");
@@ -8,17 +7,13 @@ $("#current-Time").text(current)
 }
 
 
-
-
-
-
+//a timeblock
 function createTimeBlock(hour){
 
 //creating row first usingjQuery
 const row = $("<div>");
-
-
 const currentTime = Number(moment().format("H"));
+
 //for past
 const isPast = hour < currentTime;
 
@@ -29,7 +24,6 @@ const isPresent = hour === currentTime;
 const isFuture = hour > currentTime;
 
 let rowClass = 'row';
-
 //condition to check if it is past,present or future
 if(isPast){
     rowClass = rowClass + ' past';
@@ -42,45 +36,41 @@ if(isFuture){
 }
 
 
-
 row.attr('class', rowClass);
-
 //All three columns in a row
+
 //Creating time column first
 const timeColumn = $("<section>");
 timeColumn.attr('class','time-col col-2');
+
 //Now Adding time to time Column
 timeColumn.text(hour + ":00");
-
 
 //Creating 2nd column text area
 const textareaColumn = $("<section>");
 textareaColumn.attr('class', 'textarea-col col-8');
+
 //creating textarea in textarea column
 const textarea = $('<textarea rows="3">')
+
 //Now adding textarea column into textarea
 textareaColumn.append(textarea);
-
-
-
 
 //Creating 3rd column save button
 const buttonColumn = $("<section>");
 buttonColumn.attr('class', 'button-col col-2');
 
 //create a new save button
-//const saveButton = $('<button class="btn btn-outline-primary btn-block">');
 const saveButton = $('<button class="btn fa fa-save btn-outline-primary btn-block">');
+
 //saveButton.text('Save');
 buttonColumn.append(saveButton);
-
-
 
 //adding all the columns in a row
 row.append(timeColumn, textareaColumn, buttonColumn);
 return row;
-
 }
+
 //clock in header
 $(function(){
     startClock();
@@ -93,32 +83,28 @@ for (let hour = 9; hour < 18; hour++){
 
 })
 
-//When click on save button
-//on click event
-$(document).on('click' ,'.saveButton', function(event){
-//current button
-const buttonClicked = $(event.target);
-//to get a text area go to previous sibling and children on text area
-const textarea = buttonClicked.parent().prev().children();
 
-//get a text entered
-const enteredText = textarea.val();
-console.log(enteredText);
+//to see user input in console
+$(document).ready(function () {
+// When click on save button
+    
+// on click event
+    $('.fa-save').on('click', function (event) { 
+        // current button
+        const buttonClicked = $(event.target);
+        // to get a text area go to previous sibling and children on text area
+        const textarea = buttonClicked.parent().prev().children();
+        // get a text entered
+        const enteredText = textarea.val();
+        console.log(enteredText);
+        const timeCol = buttonClicked.parent().prev().prev();
+        const time = timeCol.text()
+        const hour = time.slice(0, -3);
+        console.log(hour);
+        localStorage.setItem(hour, enteredText);
 
-//existing data from local storage
-const existingData = localStorage.getItem(hour);
-textarea.val(existingData);
-
-
-const timeCol = buttonClicked.parent().prev().prev();
-
-const time = timeCol.text()
-const hour = time.slice(0, -3);
-localStorage.setItem(hour,enteredText);
-
+    })
 })
-
-
 
 
 
