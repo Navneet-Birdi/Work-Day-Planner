@@ -61,13 +61,17 @@ const textarea = $('<textarea rows="3">')
 //Now adding textarea column into textarea
 textareaColumn.append(textarea);
 
+
+
+
 //Creating 3rd column save button
 const buttonColumn = $("<section>");
 buttonColumn.attr('class', 'button-col col-2');
 
 //create a new save button
-const saveButton = $('<button class="btn btn-outline-primary btn-block">');
-saveButton.text('Save');
+//const saveButton = $('<button class="btn btn-outline-primary btn-block">');
+const saveButton = $('<button class="btn fa fa-save btn-outline-primary btn-block">');
+//saveButton.text('Save');
 buttonColumn.append(saveButton);
 
 
@@ -91,7 +95,7 @@ for (let hour = 9; hour < 18; hour++){
 
 //When click on save button
 //on click event
-$('document').on('click' ['.savebutton'], function(event){
+$(document).on('click' ,'.save-Button', function(event){
 //current button
 const buttonClicked = $(event.target);
 //to get a text area go to previous sibling and children on text area
@@ -105,11 +109,12 @@ console.log(enteredText);
 const existingData = localStorage.getItem(hour);
 textarea.val(existingData);
 
-console.log(hour);
-console.log(enteredText);
 
+const timeCol = buttonClicked.parent().prev().prev();
+
+const time = timeCol.text()
+const hour = time.slice(0, -3);
 localStorage.setItem(hour,enteredText);
-
 
 })
 
