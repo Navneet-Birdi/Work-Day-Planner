@@ -95,7 +95,7 @@ for (let hour = 9; hour < 18; hour++){
 
 //When click on save button
 //on click event
-$(document).on('click' ,'.save-Button', function(event){
+$(document).on('click' ,'.saveButton', function(event){
 //current button
 const buttonClicked = $(event.target);
 //to get a text area go to previous sibling and children on text area
