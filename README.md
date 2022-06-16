@@ -1,3 +1,4 @@
+
 ## User Story
 
 ```md
@@ -30,3 +31,5 @@ In this app, anyone can create a schedule. The current date and time is displaye
 
  To use this app please click here:  https://navneet-birdi.github.io/Work-Day-Planner/
 
+![day1](https://user-images.githubusercontent.com/103732777/174003360-f3bb41e9-9b19-40bd-9d9d-c2842ad86abb.png)
+![day2](https://user-images.githubusercontent.com/103732777/174003366-5e60f2b5-de33-4008-99bb-59e4dc5f983c.png)
